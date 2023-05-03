@@ -44,7 +44,7 @@ function App() {
         <div className={"style"}>
         {(() => {
         const numberArray = [];
-        if (c % 2 === 0) {
+        while (c % 2 === 0) {
           numberArray.push(2);
           c = c / 2;
         }
