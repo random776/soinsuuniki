@@ -3,8 +3,8 @@ import { MathComponent } from "mathjax-react";
 
 function App() {
   const [visible, setVisible] = useState(false);
-  const min = 100000;
-  const max = 99999999999;
+  const min = 1000000;
+  const max = 999999999999;
   const [number, setNumber] = useState(
     Math.floor(Math.random() * (max + 1 - min)) + min
   );
@@ -109,6 +109,17 @@ function App() {
           こちら
         </a>
         から。
+      </p>
+      <p style={{ margin: 10 }}>
+        {" "}
+        ＊ これとは別に、調べたい数字を素因数分解できるツールが
+        <a
+          href="https://random-page.onrender.com/prime_number3.html"
+          className="btn4"
+        >
+          こちら
+        </a>
+        にあるので併せてご利用ください。
       </p>
     </>
   );
