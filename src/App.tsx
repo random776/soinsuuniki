@@ -5,7 +5,9 @@ function App() {
   const [visible, setVisible] = useState(false);
   const min = 100000;
   const max = 99999999999;
-  const [number, setNumber] = useState(Math.floor(Math.random() * (max + 1 - min)) + min);
+  const [number, setNumber] = useState(
+    Math.floor(Math.random() * (max + 1 - min)) + min
+  );
   let c = number;
 
   const a = Math.floor(Math.random() * (max + 1 - min)) + min;
@@ -15,7 +17,10 @@ function App() {
       <div>
         <p>次の数字を素因数分解しましょう。</p>
         <div className={"style"}>
-        <MathComponent display={false}  tex={String.raw`${number}`}></MathComponent>
+          <MathComponent
+            display={false}
+            tex={String.raw`${number}`}
+          ></MathComponent>
         </div>
         {visible === false && (
           <button
@@ -39,46 +44,60 @@ function App() {
             答え合わせ
           </button>
         )}
-        <div style = {{ visibility: visible ? "visible" : "hidden"}}>
-        <p>答え</p>
-        <div className={"style"}>
-        {(() => {
-        const numberArray = [];
-        while (c % 2 === 0) {
-          numberArray.push(2);
-          c = c / 2;
-        }
-        let f = 3;
-        while (f * f <= c) {
-          if (c % f == 0) {
-            numberArray.push(f);
-            c = c / f;
-          } else {
-            f = f + 2;
-          }
-        }
-        if (c !== 1) {
-            numberArray.push(c);
-        }
-        if (numberArray.length !== 1) {
-          const popedNumber = numberArray.pop();
-          const formula = numberArray.map((value) => <MathComponent display={false} tex={String.raw`${value} \times`}></MathComponent>);
-          return <>{formula}<MathComponent display={false} tex={String.raw`${popedNumber}`}></MathComponent></>;
-        }
-        else {
-          return <span>素数です。</span>
-        }
-        
-    })()}
-    </div>
+        <div style={{ visibility: visible ? "visible" : "hidden" }}>
+          <p>答え</p>
+          <div className={"style"}>
+            {(() => {
+              const numberArray = [];
+              while (c % 2 === 0) {
+                numberArray.push(2);
+                c = c / 2;
+              }
+              let f = 3;
+              while (f * f <= c) {
+                if (c % f == 0) {
+                  numberArray.push(f);
+                  c = c / f;
+                } else {
+                  f = f + 2;
+                }
+              }
+              if (c !== 1) {
+                numberArray.push(c);
+              }
+              if (numberArray.length !== 1) {
+                const popedNumber = numberArray.pop();
+                const formula = numberArray.map((value) => (
+                  <MathComponent
+                    display={false}
+                    tex={String.raw`${value} \times`}
+                  ></MathComponent>
+                ));
+                return (
+                  <>
+                    {formula}
+                    <MathComponent
+                      display={false}
+                      tex={String.raw`${popedNumber}`}
+                    ></MathComponent>
+                  </>
+                );
+              } else {
+                return <span>素数です。</span>;
+              }
+            })()}
+          </div>
         </div>
         <button
-        type="button"
-        key={"button"}
-        onClick={() => {
-          setNumber(a);
-          setVisible(false);
-        }}>整数を切り替える</button>
+          type="button"
+          key={"button"}
+          onClick={() => {
+            setNumber(a);
+            setVisible(false);
+          }}
+        >
+          整数を切り替える
+        </button>
       </div>
       <p style={{ margin: 10 }}>
         {" "}
