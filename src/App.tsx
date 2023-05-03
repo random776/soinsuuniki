@@ -3,8 +3,8 @@ import { MathComponent } from "mathjax-react";
 
 function App() {
   const [visible, setVisible] = useState(false);
-  const min = 1000000;
-  const max = 1000000000000;
+  const min = 100000;
+  const max = 99999999999;
   const [number, setNumber] = useState(Math.floor(Math.random() * (max + 1 - min)) + min);
   let c = number;
 
