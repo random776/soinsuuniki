@@ -5,7 +5,7 @@ function App() {
   const [visible, setVisible] = useState(false);
   const [power, setPower] = useState(8);
   const min = 2;
-  const max = 10**power - 1;
+  const max = 10 ** power - 1;
   const [number, setNumber] = useState(
     Math.floor(Math.random() * (max + 1 - min)) + min
   );
@@ -100,36 +100,39 @@ function App() {
           整数を切り替える
         </button>
       </div>
-      <div style={{margin: 10}}>
-      <p>＊ 数字の桁数の上限は<span className={"power"}>{power}</span>桁です。2桁から13桁の間で調整できます。</p>
-      <div style={{margin: 15 }}>
-        <span>桁数の上限を</span>
-        {power >= 2 && (
-          <button
-            className={"powerButton"}
-            type="button"
-            key={"minpower"}
-            onClick={() => {
-              setPower(power - 1);
-              console.log(power);
-            }}
-          >
-            下げる
-          </button>
-        )}
-        {power <= 12 && (
-          <button
-          className={"powerButton"}
-            type="button"
-            key={"pluspower"}
-            onClick={() => {
-              setPower(power + 1);
-            }}
-          >
-            上げる
-          </button>
-        )}
-      </div>
+      <div style={{ margin: 10 }}>
+        <p>
+          ＊ 数字の桁数の上限は<span className={"power"}>{power}</span>
+          桁です。2桁から13桁の間で調整できます。
+        </p>
+        <div style={{ margin: 15 }}>
+          <span>桁数の上限を</span>
+          {power >= 2 && (
+            <button
+              className={"powerButton"}
+              type="button"
+              key={"minpower"}
+              onClick={() => {
+                setPower(power - 1);
+                console.log(power);
+              }}
+            >
+              下げる
+            </button>
+          )}
+          {power <= 12 && (
+            <button
+              className={"powerButton"}
+              type="button"
+              key={"pluspower"}
+              onClick={() => {
+                setPower(power + 1);
+              }}
+            >
+              上げる
+            </button>
+          )}
+        </div>
       </div>
       <p style={{ margin: 10 }}>
         {" "}
