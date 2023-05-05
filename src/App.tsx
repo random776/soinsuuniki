@@ -103,7 +103,7 @@ function App() {
       <div style={{ margin: 10 }}>
         <p>
           ＊ 数字の桁数の上限は<span className={"power"}>{power}</span>
-          桁です。2桁から13桁の間で調整できます。
+          桁です。1桁から13桁の間で調整できます。
         </p>
         <div style={{ margin: 15 }}>
           <span>桁数の上限を</span>
