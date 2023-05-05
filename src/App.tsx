@@ -16,33 +16,6 @@ function App() {
     <>
       <h2>フラッシュ素因数分解ニキ</h2>
       <div>
-        <p>数字の桁数の上限は<span className={"power"}>{power}</span>桁です。2桁から13桁の間で調整できます。</p>
-        <span>＊ 桁数の上限を</span>
-        {power >= 2 && (
-          <button
-            className={"powerButton"}
-            type="button"
-            key={"minpower"}
-            onClick={() => {
-              setPower(power - 1);
-              console.log(power);
-            }}
-          >
-            減らす
-          </button>
-        )}
-        {power <= 12 && (
-          <button
-          className={"powerButton"}
-            type="button"
-            key={"pluspower"}
-            onClick={() => {
-              setPower(power + 1);
-            }}
-          >
-            増やす
-          </button>
-        )}
         <p>次の数字を素因数分解しましょう。</p>
         <div className={"style"}>
           <MathComponent
@@ -126,6 +99,37 @@ function App() {
         >
           整数を切り替える
         </button>
+      </div>
+      <div style={{margin: 10}}>
+      <p>＊ 数字の桁数の上限は<span className={"power"}>{power}</span>桁です。2桁から13桁の間で調整できます。</p>
+      <div style={{margin: 15 }}>
+        <span>桁数の上限を</span>
+        {power >= 2 && (
+          <button
+            className={"powerButton"}
+            type="button"
+            key={"minpower"}
+            onClick={() => {
+              setPower(power - 1);
+              console.log(power);
+            }}
+          >
+            下げる
+          </button>
+        )}
+        {power <= 12 && (
+          <button
+          className={"powerButton"}
+            type="button"
+            key={"pluspower"}
+            onClick={() => {
+              setPower(power + 1);
+            }}
+          >
+            上げる
+          </button>
+        )}
+      </div>
       </div>
       <p style={{ margin: 10 }}>
         {" "}
