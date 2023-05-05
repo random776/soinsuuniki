@@ -110,3 +110,15 @@ button:focus-visible {
 .style {
   margin: 20px 20px 20px 50px;
 }
+
+.power {
+  color: rgb(255, 163, 234);
+  font-size: 1.2rem;
+  margin: 0px 5px 0px 5px;
+}
+
+.powerButton {
+  margin: 0px 7px 0px 7px;
+  border: 1px solid rgb(255, 99, 219);
+  padding: 7px;
+}

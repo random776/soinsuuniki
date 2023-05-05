@@ -3,8 +3,9 @@ import { MathComponent } from "mathjax-react";
 
 function App() {
   const [visible, setVisible] = useState(false);
-  const min = 1000000;
-  const max = 999999999999;
+  const [power, setPower] = useState(8);
+  const min = 2;
+  const max = 10**power - 1;
   const [number, setNumber] = useState(
     Math.floor(Math.random() * (max + 1 - min)) + min
   );
@@ -15,6 +16,33 @@ function App() {
     <>
       <h2>フラッシュ素因数分解ニキ</h2>
       <div>
+        <p>数字の桁数の上限は<span className={"power"}>{power}</span>桁です。2桁から13桁の間で調整できます。</p>
+        <span>＊ 桁数の上限を</span>
+        {power >= 2 && (
+          <button
+            className={"powerButton"}
+            type="button"
+            key={"minpower"}
+            onClick={() => {
+              setPower(power - 1);
+              console.log(power);
+            }}
+          >
+            減らす
+          </button>
+        )}
+        {power <= 12 && (
+          <button
+          className={"powerButton"}
+            type="button"
+            key={"pluspower"}
+            onClick={() => {
+              setPower(power + 1);
+            }}
+          >
+            増やす
+          </button>
+        )}
         <p>次の数字を素因数分解しましょう。</p>
         <div className={"style"}>
           <MathComponent
