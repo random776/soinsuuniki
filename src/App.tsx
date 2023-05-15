@@ -185,7 +185,7 @@ function App() {
         {" "}
         ＊ これとは別に、調べたい数字を素因数分解できるツールが
         <a
-          href="https://random-page.onrender.com/prime_number3.html"
+          href="https://bunkaivol2.onrender.com"
           className="btn4"
         >
           こちら
