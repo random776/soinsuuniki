@@ -3,13 +3,13 @@ import { MathComponent } from "mathjax-react";
 
 function App() {
   const [visible, setVisible] = useState(false);
-  const [power, setPower] = useState(8);
+  const [power, setPower] = useState(2);
+  const [button57, setButton57] = useState(1);
   const min = 2;
   const max = 10 ** power - 1;
-  const [number, setNumber] = useState(
-    Math.floor(Math.random() * (max + 1 - min)) + min
-  );
+  const [number, setNumber] = useState(57);
   let c = number;
+  let d = button57;
 
   const a = Math.floor(Math.random() * (max + 1 - min)) + min;
   return (
@@ -50,41 +50,45 @@ function App() {
           <div className={"style"}>
             {(() => {
               const numberArray = [];
-              while (c % 2 === 0) {
-                numberArray.push(2);
-                c = c / 2;
-              }
-              let f = 3;
-              while (f * f <= c) {
-                if (c % f == 0) {
-                  numberArray.push(f);
-                  c = c / f;
-                } else {
-                  f = f + 2;
+              if (c === 57 && d === 1) {
+                return <span>素数です。</span>;
+              } else {
+                while (c % 2 === 0) {
+                  numberArray.push(2);
+                  c = c / 2;
                 }
-              }
-              if (c !== 1) {
-                numberArray.push(c);
-              }
-              if (numberArray.length !== 1) {
-                const popedNumber = numberArray.pop();
-                const formula = numberArray.map((value) => (
-                  <MathComponent
-                    display={false}
-                    tex={String.raw`${value} \times`}
-                  ></MathComponent>
-                ));
-                return (
-                  <>
-                    {formula}
+                let f = 3;
+                while (f * f <= c) {
+                  if (c % f == 0) {
+                    numberArray.push(f);
+                    c = c / f;
+                  } else {
+                    f = f + 2;
+                  }
+                }
+                if (c !== 1) {
+                  numberArray.push(c);
+                }
+                if (numberArray.length !== 1) {
+                  const popedNumber = numberArray.pop();
+                  const formula = numberArray.map((value) => (
                     <MathComponent
                       display={false}
-                      tex={String.raw`${popedNumber}`}
+                      tex={String.raw`${value} \times`}
                     ></MathComponent>
-                  </>
-                );
-              } else {
-                return <span>素数です。</span>;
+                  ));
+                  return (
+                    <>
+                      {formula}
+                      <MathComponent
+                        display={false}
+                        tex={String.raw`${popedNumber}`}
+                      ></MathComponent>
+                    </>
+                  );
+                } else {
+                  return <span>素数です。</span>;
+                }
               }
             })()}
           </div>
@@ -130,6 +134,38 @@ function App() {
               }}
             >
               上げる
+            </button>
+          )}
+        </div>
+      </div>
+      <div style={{ margin: 10 }}>
+        ＊ 57は素数でないというバグを起こせる機能を追加しました。
+        <div style={{ margin: 15 }}>
+          バグを
+          {button57 === 0 && (
+            <button
+              className={"powerButton"}
+              type="button"
+              key={"not57"}
+              onClick={() => {
+                setButton57(1);
+                setVisible(false);
+              }}
+            >
+              解除する
+            </button>
+          )}
+          {button57 === 1 && (
+            <button
+              className={"powerButton"}
+              type="button"
+              key={"57"}
+              onClick={() => {
+                setButton57(0);
+                setVisible(false);
+              }}
+            >
+              起こす
             </button>
           )}
         </div>
