@@ -152,7 +152,7 @@ function App() {
                 setVisible(false);
               }}
             >
-              解除する
+              修正する
             </button>
           )}
           {button57 === 1 && (
