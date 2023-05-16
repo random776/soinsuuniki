@@ -51,7 +51,7 @@ function App() {
             {(() => {
               const numberArray = [];
               if (c === 57 && d === 1) {
-                return <span>素数です。</span>;
+                return <span>素数です。異論は認めません()。</span>;
               } else {
                 while (c % 2 === 0) {
                   numberArray.push(2);
